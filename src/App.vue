@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import ScoreBoard from '@/components/ScoreBoard.vue'
+import ScoreBoard from './components/ScoreBoard.vue'
 
 export default {
 
@@ -57,8 +57,10 @@ export default {
   computed: {
     answers() {
       var answers = [...this.incorrectAnswers];
-      answers.splice(Math.round(Math.random() * answers.length), 0, this.correctAnswer);
-      return answers;
+      if(this.correctAnswer) {
+        answers.splice(Math.round(Math.random() * answers.length), 0, this.correctAnswer);
+        return answers;
+      }
     }
   },
   methods: {
